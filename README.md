@@ -34,9 +34,12 @@ SO THAT I can plan a trip accordingly
 
 * When a user clicks on a city in teh search history, they are again presented with current and future conditions for that city.
 
-## Features
-The follwing image shows the web application's appearance and functionality
+## Mockup
+The following image shows the web application's appearance and functionality
 ![alt text](./assets/images/application-demo.jpeg)
+
+## Additional Features
+An additional feature has been added to clear the history of the search
 
 ## Acknowledgements
 
