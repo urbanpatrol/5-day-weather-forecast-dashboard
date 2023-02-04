@@ -31,13 +31,13 @@ function init() {
                 const day = currentDate.getDate();
                 const month = currentDate.getMonth() + 1;
                 const year = currentDate.getFullYear();
-                nameEl.innerHTML = data.name + " (" + month + "/" + day + "/" + year + ") ";
+                nameEl.innerHTML = data.name + " (" + day + "/" + month + "/" + year + ") ";
                 let weatherPic = data.weather[0].icon;
                 currentPicEl.setAttribute("src", "https://openweathermap.org/img/wn/" + weatherPic + "@2x.png");
                 currentPicEl.setAttribute("alt", data.weather[0].description);
                 currentTempEl.innerHTML = "Temperature: " + k2f(data.main.temp) + " &#176F";
                 currentHumidityEl.innerHTML = "Humidity: " + data.main.humidity + "%";
-                currentWindEl.innerHTML = "Wind Speed: " + data.wind.speed + " MPH";
+                currentWindEl.innerHTML = "Wind Speed: " + data.wind.speed + " mph";
 
 
                 // Get 5 day forecast for this city
