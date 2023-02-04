@@ -1,4 +1,5 @@
-function initPage() {
+function init() {
+
     const cityEl = document.getElementById("enter-city");
     const searchEl = document.getElementById("search-button");
     const clearEl = document.getElementById("clear-history");
@@ -13,7 +14,7 @@ function initPage() {
     let searchHistory = JSON.parse(localStorage.getItem("search")) || [];
 
     // Assigning a unique API to a variable
-    const APIKey = "b9db1e7b867c3831419b0050f85dff03";
+    const APIKey = "96c52a0b3faf0211863bd6bd11385c65";
 
     function getWeather(cityName) {
         // Execute a current weather get request from open weather api
@@ -38,8 +39,9 @@ function initPage() {
                 currentHumidityEl.innerHTML = "Humidity: " + data.main.humidity + "%";
                 currentWindEl.innerHTML = "Wind Speed: " + data.wind.speed + " MPH";
 
+
                 // Get 5 day forecast for this city
-                let cityID = data.id;
+                const cityID = data.id;
                 let forecastQueryURL = "https://api.openweathermap.org/data/2.5/forecast?id=" + cityID + "&appid=" + APIKey;
                 fetch(forecastQueryURL)
                     .then(function (response) {
@@ -52,8 +54,8 @@ function initPage() {
                         const forecastEls = document.querySelectorAll(".forecast");
                         for (i = 0; i < forecastEls.length; i++) {
                             forecastEls[i].innerHTML = "";
-                            const forecastIndex = i * 8 + 4;
-                            const forecastDate = new Date(response.data.list[forecastIndex].dt * 1000);
+                            let forecastIndex = i * 8 + 4;
+                            const forecastDate = new Date(data.list[forecastIndex].dt * 1000);
                             const forecastDay = forecastDate.getDate();
                             const forecastMonth = forecastDate.getMonth() + 1;
                             const forecastYear = forecastDate.getFullYear();
@@ -64,14 +66,14 @@ function initPage() {
 
                             // Icon for current weather
                             const forecastWeatherEl = document.createElement("img");
-                            forecastWeatherEl.setAttribute("src", "https://openweathermap.org/img/wn/" + response.data.list[forecastIndex].weather[0].icon + "@2x.png");
-                            forecastWeatherEl.setAttribute("alt", response.data.list[forecastIndex].weather[0].description);
+                            forecastWeatherEl.setAttribute("src", "https://openweathermap.org/img/wn/" + data.list[forecastIndex].weather[0].icon + "@2x.png");
+                            forecastWeatherEl.setAttribute("alt", data.list[forecastIndex].weather[0].description);
                             forecastEls[i].append(forecastWeatherEl);
                             const forecastTempEl = document.createElement("p");
-                            forecastTempEl.innerHTML = "Temp: " + k2f(response.data.list[forecastIndex].main.temp) + " &#176F";
+                            forecastTempEl.innerHTML = "Temp: " + k2f(data.list[forecastIndex].main.temp) + " &#176F";
                             forecastEls[i].append(forecastTempEl);
                             const forecastHumidityEl = document.createElement("p");
-                            forecastHumidityEl.innerHTML = "Humidity: " + response.data.list[forecastIndex].main.humidity + "%";
+                            forecastHumidityEl.innerHTML = "Humidity: " + data.list[forecastIndex].main.humidity + "%";
                             forecastEls[i].append(forecastHumidityEl);
                         }
                     })
@@ -120,4 +122,4 @@ function initPage() {
     
 }
 
-initPage();
+init();
