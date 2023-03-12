@@ -36,7 +36,7 @@ SO THAT I can plan a trip accordingly
 
 ## Mockup
 The following image shows the web application's appearance and functionality
-![alt text](./assets/images/weather-forecast.jpeg)
+![alt text](./assets/images/weather-forecast.jpg)
 
 ## Additional Features
 An additional feature has been added to clear the history of the search
